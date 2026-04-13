@@ -3,6 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <windows.h>
+#include <locale.h>
 #include "lista.h"
 
 
@@ -292,6 +293,10 @@ void removerArquivosGerados(){
 }
 
 int main(){
+    setlocale(LC_ALL, "Portuguese");
+    SetConsoleOutputCP(65001);
+    SetConsoleCP(65001);
+
     Lista * minhaLista = CriarLista(1000);
     int opcao;
     char municipio[100];
