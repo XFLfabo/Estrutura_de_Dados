@@ -95,7 +95,7 @@ void concatenarArquivos(const char * diretorio, Lista* L){
                             case 5: strncpy(r.municipio_oj, field, 99); break;
                             case 6: r.id_ultimo_oj = atoi(field); break;
                             case 7: strncpy(r.nome, field, 199); break;
-                            case 8: strncpy(r.mesano_cnm1, field, 19); break;
+                            case 8: strncpy(r.mesano_cnml, field, 19); break;
                             case 9: strncpy(r.mesano_sent, field, 19); break;
                             case 10: r.casos_novos_2026 = atoi(field); break;
                             case 11: r.julgados_2026 = atoi(field); break;
@@ -231,7 +231,7 @@ void gerarResumo(Lista* L){
 }
 
 //Função 3: filtrar por município
-void filtrarPorMunicipio(Lista* L, const char* munucipio){
+void filtrarPorMunicipio(Lista* L, const char* municipio){
     if(L == NULL || L->Tamanho == 0){
         printf("Aviso: a lista está vazia! carregue os dados primeiro.\n");
         return;
@@ -249,7 +249,7 @@ void filtrarPorMunicipio(Lista* L, const char* munucipio){
             fprintf(f_mun, "%s,%s,%s,%s,%s,%s,%d,%s,%s,%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n",
                 L->Dados[i].sigla_tribunal, L->Dados[i].procedimento, L->Dados[i].ramo_justica,
                 L->Dados[i].sigla_grau, L->Dados[i].uf_oj, L->Dados[i].municipio_oj,
-                L->Dados[i].id_ultimo_oj, L->Dados[i].nome, L->Dados[i].mesano_cnm1,
+                L->Dados[i].id_ultimo_oj, L->Dados[i].nome, L->Dados[i].mesano_cnml,
                 L->Dados[i].mesano_sent, L->Dados[i].casos_novos_2026, L->Dados[i].julgados_2026,
                 L->Dados[i].prim_sent2026, L->Dados[i].suspensos_2026, L->Dados[i].dessobrestados_2026,
                 L->Dados[i].cumprimento_meta1, L->Dados[i].distm2_a, L->Dados[i].julgm2_a,
@@ -262,11 +262,11 @@ void filtrarPorMunicipio(Lista* L, const char* munucipio){
         }
     }
     fclose(f_mun);
-    printf("Sucesso: arquivo '%s' gerado com %d ocorrências.\n", nome_arquivo, const);
+    printf("Sucesso: arquivo '%s' gerado com %d ocorrências.\n", nome_arquivo, cont);
 
     if(qtd_arquivos_municipios < 100){
         int ja_existe = 0;
-        for(int j=0; j<qtd_arquivos_municipios; J++){
+        for(int j=0; j<qtd_arquivos_municipios; j++){
             if(strcmp(arquivos_municipios[j], nome_arquivo) == 0) ja_existe = 1;
         }
         if(!ja_existe){
