@@ -183,7 +183,7 @@ void gerarResumo(Lista* L){
         if(encontrado == -1){
             qtd_tribunais++;
             resumos = (ResumoTribunal*)realloc(resumos, qtd_tribunais * sizeof(ResumoTribunal));
-            mumset(&resumos[qtd_tribunais-1], 0, sizeof(ResumoTribunal));
+            memset(&resumos[qtd_tribunais-1], 0, sizeof(ResumoTribunal));
             strcpy(resumos[qtd_tribunais-1].sigla, L->Dados[i].sigla_tribunal);
             encontrado = qtd_tribunais - 1;
         }
