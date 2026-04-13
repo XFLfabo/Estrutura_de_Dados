@@ -23,5 +23,5 @@ O código segue o modelo de separação em três arquivos:
 ## Como Compilar e Executar
 ```bash
 gcc main.c lista.c -o sistema_tribunal.exe
-.\sistema_tribunal.exe
+.\sistema_tribunal
 ```
